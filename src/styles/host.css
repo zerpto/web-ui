@@ -1,0 +1,9 @@
+/*
+ * The host's entry. Import it right after `@import "tailwindcss";`. It brings the theme, the
+ * utilities and the page base styles, and scans this package so its classes are generated.
+ */
+@import "./theme.css";
+@import "./utilities.css";
+@import "./base.css";
+
+@source "../";

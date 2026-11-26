@@ -1,0 +1,11 @@
+node_modules/
+*.tsbuildinfo
+.DS_Store
+*.log
+
+.env*
+!.env.example
+
+# pnpm only
+package-lock.json
+yarn.lock

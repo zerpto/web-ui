@@ -1,0 +1,9 @@
+/*
+ * An extension's entry: theme and utilities for class generation only. No preflight, no base
+ * styles and no theme variables (utilities read the host's, with the default as fallback).
+ * Generate the utilities inside the extension's scope; see the README.
+ */
+@import "./theme.css" theme(reference);
+@import "./utilities.css";
+
+@source "../";

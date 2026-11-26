@@ -1,0 +1,43 @@
+/* Page-wide styles. Host only: an extension must never restyle the page. */
+
+@layer base {
+  body {
+    @apply bg-white font-sans text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-900 dark:bg-brand-500/30 dark:text-white;
+  }
+}
+
+/*
+ * Page gutter: the side padding of the app shell. Full-width blocks use `bleed` to cancel it, and
+ * pad their left edge with `--row-start` (the gutter, plus the sidebar they run under) so their text
+ * lines up with the page title. Change it here to retune every page at once.
+ */
+:root {
+  --gutter: 0.75rem;
+  /* Where a table's first cell starts, and how far a list frame reaches under the sidebar (see `bleed`). */
+  --row-start: var(--gutter);
+  --rail-offset: 0px;
+}
+@media (min-width: 40rem) {
+  :root {
+    --gutter: 1rem;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --gutter: 1.5rem;
+  }
+}
+
+/*
+ * Width of the desktop sidebar, set by the app shell (0 elsewhere). Registered so collapsing the
+ * sidebar animates the menu, the page padding and the list tables together.
+ */
+@property --shell-rail {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}

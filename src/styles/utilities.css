@@ -1,0 +1,41 @@
+/* Custom utilities the shared components use. They only generate CSS where a class is used. */
+
+/*
+ * A full-width block (list table, detail/form section, tab bar, banner): runs to the right edge of
+ * the content area and, on the left, on under the frosted sidebar to the window edge, so it shows
+ * blurred through the menu. Content stays put: pad the left edge with `--row-start` (not `--gutter`),
+ * and shift centered blocks by `--rail-offset`. Outside the app shell `--shell-rail` is 0.
+ */
+@utility bleed-left {
+  margin-left: calc((var(--gutter) + var(--shell-rail)) * -1);
+  --row-start: calc(var(--gutter) + var(--shell-rail));
+  --rail-offset: calc(var(--shell-rail) + 0.75rem);
+}
+
+@utility bleed-right {
+  margin-right: calc(var(--gutter) * -1);
+  --row-start: calc(var(--gutter) + var(--shell-rail));
+  --rail-offset: calc(var(--shell-rail) + 0.75rem);
+}
+
+@utility bleed {
+  margin-left: calc((var(--gutter) + var(--shell-rail)) * -1);
+  margin-right: calc(var(--gutter) * -1);
+  --row-start: calc(var(--gutter) + var(--shell-rail));
+  --rail-offset: calc(var(--shell-rail) + 0.75rem);
+}
+
+/*
+ * A widely spaced dotted rule along the top edge of a cell, for rows that belong to one group
+ * (a native `dotted` border is 1px dots with 1px gaps and reads as a solid line).
+ */
+@utility dotted-top {
+  --dotted-color: var(--color-zinc-400);
+  background-image: radial-gradient(circle, var(--dotted-color) 0.6px, transparent 0.9px);
+  background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-position: left top;
+  &:where(.dark, .dark *) {
+    --dotted-color: oklch(1 0 0 / 0.3);
+  }
+}

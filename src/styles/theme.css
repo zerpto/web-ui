@@ -1,0 +1,91 @@
+/* Design tokens and variants. Consumers import `host.css` or `remote.css`, which include this. */
+
+/* Class-based dark mode: the host toggles `dark` on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+/* Roomier form density, used by the auth and onboarding pages. */
+@custom-variant loose (&:where(.loose, .loose *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /*
+   * Semantic palettes — change these to rebrand the whole app.
+   *   brand:  purple (Tailwind's stock purple scale). Primary actions, links, focus.
+   *   accent: green. Success states and highlights.
+   *   danger: red. Errors and warnings, kept distinct from the purple brand.
+   * White (putih) is the base surface.
+   */
+  --color-brand-50: oklch(97.7% 0.014 308.299);
+  --color-brand-100: oklch(94.6% 0.033 307.174);
+  --color-brand-200: oklch(90.2% 0.063 306.703);
+  --color-brand-300: oklch(82.7% 0.119 306.383);
+  --color-brand-400: oklch(71.4% 0.203 305.504);
+  --color-brand-500: oklch(62.7% 0.265 303.9);
+  --color-brand-600: oklch(55.8% 0.288 302.321);
+  --color-brand-700: oklch(49.6% 0.265 301.924);
+  --color-brand-800: oklch(43.8% 0.218 303.724);
+  --color-brand-900: oklch(38.1% 0.176 304.987);
+  --color-brand-950: oklch(29.1% 0.149 302.717);
+
+  --color-accent-50: oklch(97.9% 0.021 166.113);
+  --color-accent-100: oklch(95% 0.052 163.051);
+  --color-accent-200: oklch(90.5% 0.093 164.15);
+  --color-accent-300: oklch(84.5% 0.143 164.978);
+  --color-accent-400: oklch(76.5% 0.177 163.223);
+  --color-accent-500: oklch(69.6% 0.17 162.48);
+  --color-accent-600: oklch(59.6% 0.145 163.225);
+  --color-accent-700: oklch(50.8% 0.118 165.612);
+  --color-accent-800: oklch(43.2% 0.095 166.913);
+  --color-accent-900: oklch(37.8% 0.077 168.94);
+  --color-accent-950: oklch(26.2% 0.051 172.552);
+
+  --color-danger-50: oklch(97.1% 0.013 17.38);
+  --color-danger-100: oklch(93.6% 0.032 17.717);
+  --color-danger-200: oklch(88.5% 0.062 18.334);
+  --color-danger-300: oklch(80.8% 0.114 19.571);
+  --color-danger-400: oklch(70.4% 0.191 22.216);
+  --color-danger-500: oklch(63.7% 0.237 25.331);
+  --color-danger-600: oklch(57.7% 0.245 27.325);
+  --color-danger-700: oklch(50.5% 0.213 27.518);
+  --color-danger-800: oklch(44.4% 0.177 26.899);
+  --color-danger-900: oklch(39.6% 0.141 25.723);
+  --color-danger-950: oklch(25.8% 0.092 26.042);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-panel-in: panel-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-panel-out: panel-out 0.16s ease-in both;
+
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes panel-out {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 0;
+      transform: translateX(1.5rem);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
